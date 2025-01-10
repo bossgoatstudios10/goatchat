@@ -4,8 +4,8 @@ const { PeerServer } = require('peer');
 const http = require('http');
 
 const app = express();
-const port = process.env.PORT || 3000;
-const peerPort = process.env.PEER_PORT || 3009;
+const port = process.env.PORT || 10000; // Express server port
+const peerPort = process.env.PEER_PORT || 3009; // PeerJS server port
 
 let waitingRoom = [];
 
@@ -51,7 +51,7 @@ app.post('/notify-skip', (req, res) => {
 
 const server = http.createServer(app);
 server.listen(port, () => {
-  console.log(`Main server running on port ${port}`);
+  console.log(`Express server running on port ${port}`);
 });
 
 const peerServer = PeerServer({
@@ -62,9 +62,7 @@ const peerServer = PeerServer({
   debug: true,
 });
 
-/*peerServer.listen(peerPort, () => {
-  console.log(`PeerJS server running on port ${peerPort}`);
-});
-*/
+
+
 
 
