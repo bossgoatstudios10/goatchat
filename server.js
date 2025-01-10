@@ -10,7 +10,7 @@ const peerPort = process.env.PEER_PORT || 3009;
 let waitingRoom = [];
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://goatchat.onrender.com'],
+  origin: ['http://localhost:3000', 'https://goatchat.onrender.com', 'https://wir.tde.mybluehost.me/'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
