@@ -4,13 +4,13 @@ const { PeerServer } = require('peer');
 const http = require('http');
 
 const app = express();
-const port = 3000;
-const peerPort = 3009;
+const port = process.env.PORT || 3000;
+const peerPort = process.env.PEER_PORT || 3009;
 
 let waitingRoom = [];
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://192.168.20.3:3000'],
+  origin: ['http://localhost:3000', 'https://goatchat.onrender.com'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -51,7 +51,7 @@ app.post('/notify-skip', (req, res) => {
 
 const server = http.createServer(app);
 server.listen(port, () => {
-  console.log(`Main server running on http://192.168.20.3:${port}`);
+  console.log(`Main server running on port ${port}`);
 });
 
 const peerServer = PeerServer({
@@ -63,5 +63,7 @@ const peerServer = PeerServer({
 });
 
 peerServer.listen(peerPort, () => {
-  console.log(`PeerJS server running on http://192.168.20.3:${peerPort}`);
+  console.log(`PeerJS server running on port ${peerPort}`);
 });
+
+
