@@ -62,8 +62,9 @@ const peerServer = PeerServer({
   debug: true,
 });
 
-peerServer.listen(peerPort, () => {
+/*peerServer.listen(peerPort, () => {
   console.log(`PeerJS server running on port ${peerPort}`);
 });
+*/
 
 
